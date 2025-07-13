@@ -16,27 +16,52 @@
       padding: 1em 2em;
       cursor: pointer;
     }
-    video {
+    .video-wrapper {
       margin-top: 20px;
-      width: 80%;
-      display: none;
+      display: flex;
+      justify-content: center;
+    }
+    video {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 0 20px #000;
+    }
+    .emoji {
+      font-size: 2em;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>😂 haha oldal</h1>
+  <h1>Ez még mindig...</h1>
+  <div class="emoji">👇</div>
   <button onclick="playVideo()">Nyomd meg!</button><br>
-  <video id="myVideo" controls>
-    <source src="viccesvideo.mp4" type="video/mp4">
-    A böngésződ nem támogatja a videólejátszót.
-  </video>
+
+  <div class="video-wrapper" id="videoWrapper">
+    <!-- ide kerül majd a videó, csak akkor ha a gombot megnyomják -->
+  </div>
 
   <script>
     function playVideo() {
-      const video = document.getElementById('myVideo');
-      video.style.display = 'block';
-      video.volume = 1.0; // 100% hangerő
-      video.play();
+      const wrapper = document.getElementById('videoWrapper');
+
+      // Ne adjunk hozzá új videót, ha már egyszer rákattintottak
+      if (document.getElementById('myVideo')) return;
+
+      // Videó elem létrehozása
+      const video = document.createElement('video');
+      video.id = 'myVideo';
+      video.controls = true;
+      video.autoplay = true;
+      video.volume = 1.0;
+
+      // Forrás elem létrehozása
+      const source = document.createElement('source');
+      source.src = 'viccesvideo.mp4';
+      source.type = 'video/mp4';
+
+      video.appendChild(source);
+      wrapper.appendChild(video);
     }
   </script>
 </body>
