@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <title>hahaha</title>
+  <style>
+    body {
+      text-align: center;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      padding-top: 50px;
+    }
+    button {
+      font-size: 2em;
+      padding: 1em 2em;
+      cursor: pointer;
+    }
+    video {
+      margin-top: 20px;
+      width: 80%;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>😂 haha oldal</h1>
+  <button onclick="playVideo()">Nyomd meg!</button><br>
+  <video id="myVideo" controls>
+    <source src="viccesvideo.mp4" type="video/mp4">
+    A böngésződ nem támogatja a videólejátszót.
+  </video>
+
+  <script>
+    function playVideo() {
+      const video = document.getElementById('myVideo');
+      video.style.display = 'block';
+      video.volume = 1.0; // 100% hangerő
+      video.play();
+    }
+  </script>
+</body>
+</html>
