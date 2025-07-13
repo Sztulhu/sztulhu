@@ -60,6 +60,12 @@
       source.src = 'viccesvideo.mp4';
       source.type = 'video/mp4';
 
+      // Ha nem található a videó, eltávolítjuk a videóelemet
+      source.onerror = () => {
+        wrapper.innerHTML = '';
+        // alert eltávolítva
+      };
+
       video.appendChild(source);
       wrapper.appendChild(video);
     }
